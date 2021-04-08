@@ -43,13 +43,14 @@ public class CoursePeriodDao {
                 "VALUES(?,?,?)";
         Connection con = mysqlConnection.getConnection();
         try {
+            con.setAutoCommit(false);
+
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setTime(1, startTime);
             pst.setTime(2, endTime);
             pst.setString(3, Integer.toString(dayOfWeek));
-
-            con.setAutoCommit(false);
             pst.executeUpdate();
+
             con.commit();
             mysqlConnection.closeConnection();
             System.out.println("New Time Range Added.....");
@@ -110,10 +111,13 @@ public class CoursePeriodDao {
                 "VALUES(?,?)";
         Connection con = mysqlConnection.getConnection();
         try {
+            con.setAutoCommit(false);
+
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, Integer.toString(timeId));
             pst.setString(2, Integer.toString(enrollmentId));
             pst.executeUpdate();
+
             con.commit();
             mysqlConnection.closeConnection();
             System.out.println("Enrollment Successful.....");
@@ -153,6 +157,4 @@ public class CoursePeriodDao {
         }
         return (count == 0) ? true : false;
     }
-
-
 }
