@@ -11,12 +11,10 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    implementation 'mysql:mysql-connector-java:8.0.23'
+run{
+    standardInput = System.in
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.23'
 }

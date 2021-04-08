@@ -14,20 +14,29 @@ public class DetailsView {
 
     public static void viewCourses(List<Course> courses) {
         for (Course course : courses) {
-            course.printCourse();
+            System.out.println(course.toString());
         }
     }
 
     public static void viewTrainees(List<Trainee> trainees) {
         for (Trainee trainee : trainees) {
-            trainee.printTrainee();
+            System.out.println(trainee.toString());
         }
     }
 
     public static void viewPeriods(List<Period> periods) {
         for (Period period : periods) {
-            period.printPeriod();
+            System.out.println(period.toString());
         }
     }
 
+    public static void showStartingOption() {
+        System.out.println();
+        System.out.println("Choose the option :");
+        System.out.println("1. Get course details by course id");
+        System.out.println("2. Get trainess details by course id");
+        System.out.println("3. Get allocated time slot by course id");
+        System.out.println("4. Allocate a time for specific course-trainee by the enrollment id");
+        System.out.println("5. EXIT ");
+    }
 }

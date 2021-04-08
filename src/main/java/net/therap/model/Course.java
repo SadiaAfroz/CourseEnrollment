@@ -5,34 +5,38 @@ package net.therap.model;
  * @since 3/30/21
  */
 public class Course {
-    private int courseId;
-    private String courseName;
+
+    private int id;
+    private String name;
 
     public Course() {
     }
 
-    public Course(int courseId, String courseName) {
-        this.courseId = courseId;
-        this.courseName = courseName;
+    public Course(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getCourseId() {
-        return courseId;
+    public int getId() {
+        return id;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void printCourse() {
-        System.out.println("CourseId : " + courseId + " CourseName : " + courseName);
+    @Override
+    public String toString() {
+        return "{ courseId=" + id +
+                ", courseName='" + name + '\'' +
+                '}';
     }
 }

@@ -5,28 +5,28 @@ package net.therap.model;
  * @since 4/1/21
  */
 public class Period {
-    private int time_id;
+
+    private int timeId;
     private String startTime;
     private String endTime;
     private int dayOfWeek;
 
     public Period() {
-
     }
 
-    public Period(int time_id, String startTime, String endTime, int dayOfWeek) {
-        this.time_id = time_id;
+    public Period(int timeId, String startTime, String endTime, int dayOfWeek) {
+        this.timeId = timeId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.dayOfWeek = dayOfWeek;
     }
 
-    public int getTime_id() {
-        return time_id;
+    public int getTimeId() {
+        return timeId;
     }
 
-    public void setTime_id(int time_id) {
-        this.time_id = time_id;
+    public void setTime_id(int timeId) {
+        this.timeId = timeId;
     }
 
     public String getStartTime() {
@@ -53,7 +53,10 @@ public class Period {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public void printPeriod() {
-        System.out.println("Day Of work : " + Days.getDay(dayOfWeek - 1) + " Start Time : " + startTime + " End Time : " + endTime);
+    @Override
+    public String toString() {
+        return "{Day Of work : " + Days.getDay(dayOfWeek - 1) +
+                " Start Time : " + startTime + " End Time : " + endTime +
+                '}';
     }
 }

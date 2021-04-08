@@ -5,35 +5,38 @@ package net.therap.model;
  * @since 3/31/21
  */
 public class Trainee {
-    private int traineeId;
-    private String traineeName;
+
+    private int id;
+    private String name;
 
     public Trainee() {
     }
 
-    public Trainee(int traineeId, String traineeName) {
-        this.traineeId = traineeId;
-        this.traineeName = traineeName;
+    public Trainee(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getTraineeId() {
-        return traineeId;
+    public int getId() {
+        return id;
     }
 
-    public void setTraineeId(int traineeId) {
-        this.traineeId = traineeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTraineeName() {
-        return traineeName;
+    public String getName() {
+        return name;
     }
 
-    public void setTraineeName(String traineeName) {
-        this.traineeName = traineeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void printTrainee() {
-        System.out.println("TraineeId : " + traineeId + " TraineeName : " + traineeName);
+    @Override
+    public String toString() {
+        return "{id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
-
 }

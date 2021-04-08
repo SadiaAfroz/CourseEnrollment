@@ -1,38 +1,51 @@
 package net.therap;
 
-import net.therap.controller.CourseDetails;
+import net.therap.controller.CourseController;
 import net.therap.controller.TimeAllocation;
-import net.therap.model.Course;
-import net.therap.model.Period;
-import net.therap.model.Trainee;
 import net.therap.view.DetailsView;
 
-import java.util.List;
+import java.util.Scanner;
+
+import static net.therap.controller.InputType.*;
 
 /**
  * @author sadia.afroz
  * @since 3/30/21
  */
 public class Main {
+
     public static void main(String[] args) {
 
-        CourseDetails courseDetails = new CourseDetails();
-
-        Course course = courseDetails.getCourseById(2);
-        course.printCourse();
-
-        List<Trainee> trainees = courseDetails.getTraineesByCourseId(1);
-        DetailsView.viewTrainees(trainees);
-
-        List<Period> periods = courseDetails.getAllocatedTimeByCourseId(1);
-        DetailsView.viewPeriods(periods);
-
-        TimeAllocation timeAllocation = new TimeAllocation();
-
-        String time1 = "10:00:00";
-        String time2 = "10:50:00";
-        int dayOfWeek = 3;
-        int enrollmentId = 1;
-        timeAllocation.allocateTime(time1, time2, dayOfWeek, enrollmentId);
+        Scanner input = new Scanner(System.in);
+        DetailsView.showStartingOption();
+        while (input.hasNext()) {
+            int choice = input.nextInt();
+            switch (choice) {
+                case COURSE_DETAILS_BY_COURSEID:
+                    System.out.println("COURSE_DETAILS_BY_COURSEID");
+                    CourseController courseDetails = new CourseController();
+                    courseDetails.getCourseById();
+                    break;
+                case TRAINEES_DETAILS_BY_COURSEID:
+                    System.out.println("TRAINEES_DETAILS_BY_COURSEID");
+                    CourseController traineesForCourse = new CourseController();
+                    traineesForCourse.getTraineesByCourseId();
+                    break;
+                case TIMESLOTS_BY_COURSEID:
+                    System.out.println("TIMESLOTS_BY_COURSEID");
+                    CourseController periodsForCourse = new CourseController();
+                    periodsForCourse.getAllocatedTimeByCourseId();
+                    break;
+                case ALLOCATE_TIMESLOT:
+                    System.out.println("ALLOCATE_TIMESLOT");
+                    TimeAllocation timeAllocation = new TimeAllocation();
+                    timeAllocation.allocateTime();
+                    break;
+                case EXIT:
+                    System.out.printf("EXIT");
+                    System.exit(0);
+            }
+            DetailsView.showStartingOption();
+        }
     }
 }

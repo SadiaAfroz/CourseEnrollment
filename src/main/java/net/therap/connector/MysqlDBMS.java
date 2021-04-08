@@ -1,4 +1,4 @@
-package net.therap.controller;
+package net.therap.connector;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @since 3/30/21
  */
 public class MysqlDBMS {
+
     private String userName;
     private String password;
     private String serverName;
@@ -56,10 +57,8 @@ public class MysqlDBMS {
             throwables.printStackTrace();
         } catch (Exception ex) {
             System.out.println(ex);
-            Logger.getLogger(net.therap.controller.MysqlDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MysqlDBMS.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
         return this.connection;
     }
 
