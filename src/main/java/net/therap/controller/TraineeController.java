@@ -1,6 +1,8 @@
 package net.therap.controller;
 
+import net.therap.model.Course;
 import net.therap.model.Trainee;
+import net.therap.service.CourseService;
 import net.therap.service.TraineeService;
 import net.therap.validator.TraineeValidator;
 
@@ -37,5 +39,27 @@ public class TraineeController {
         } else {
             System.out.println("Not a valid Trainee Name ");
         }
+    }
+
+    public void updateTrainee() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter new Trainee Name: ");
+        String newName= input.nextLine();
+        System.out.println("Enter Trainee id: ");
+        int traineeId= input.nextInt();
+
+        TraineeService traineeService=new TraineeService();
+        Trainee trainee= new Trainee(traineeId, newName);
+        traineeService.updateTrainee(trainee);
+    }
+
+    public void deleteTrainee() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter Trainee id: ");
+        int traineeId= input.nextInt();
+
+        TraineeService traineeService=new TraineeService();
+        Trainee trainee= new Trainee(traineeId);
+        traineeService.deleteTrainee(trainee);
     }
 }

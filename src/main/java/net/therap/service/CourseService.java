@@ -39,4 +39,14 @@ public class CourseService {
         CourseDao courseDao = new CourseDao();
         courseDao.insert(course);
     }
+
+    public void updateCourse(Course course) {
+        CourseDao courseDao = new CourseDao();
+        courseDao.update(course);
+    }
+
+    public void deleteCourse(Course course) {
+        CourseDao courseDao = new CourseDao();
+        courseDao.delete(course);
+    }
 }

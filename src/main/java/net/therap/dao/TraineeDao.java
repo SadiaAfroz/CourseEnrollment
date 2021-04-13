@@ -119,7 +119,52 @@ public class TraineeDao {
 
             con.commit();
             mysqlConnection.closeConnection();
-            System.out.println("New Time Range Added.....");
+            System.out.println("New Trainee Added.....");
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public void update(Trainee trainee){
+        String sql = "UPDATE TRAINEES SET trainee_name=? WHERE trainee_id=?";
+        Connection con = mysqlConnection.getConnection();
+        try {
+            con.setAutoCommit(false);
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, trainee.getName());
+            pst.setInt(2, trainee.getId());
+            pst.executeUpdate();
+
+            con.commit();
+            mysqlConnection.closeConnection();
+            System.out.println("Trainee Name updated.....");
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public void delete(Trainee trainee) {
+        String sql =  "DELETE FROM TRAINEES WHERE trainee_id=?";
+        Connection con = mysqlConnection.getConnection();
+        try {
+            con.setAutoCommit(false);
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, trainee.getId());
+            pst.executeUpdate();
+
+            con.commit();
+            mysqlConnection.closeConnection();
+            System.out.println("Trainee deleted.....");
         } catch (SQLException e) {
             try {
                 con.rollback();

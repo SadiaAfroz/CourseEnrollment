@@ -15,5 +15,9 @@ public interface InputType {
     int UPDATE_TRAINEE_ON_COURSE = 7;
     int TIMESLOTS_BY_COURSEID = 8;
     int ALLOCATE_TIMESLOT = 9;
-    int EXIT = 10;
+    int UPDATE_TRAINEE_NAME = 10;
+    int UPDATE_COURSE_NAME = 11;
+    int DELETE_TRAINEE = 12;
+    int DELETE_COURSE = 13;
+    int EXIT = 14;
 }

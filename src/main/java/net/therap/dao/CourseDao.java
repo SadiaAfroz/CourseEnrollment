@@ -129,4 +129,49 @@ public class CourseDao {
             }
         }
     }
+
+    public void update(Course course) {
+        String sql = "UPDATE COURSES SET course_name=? WHERE course_id=?";
+        Connection con = mysqlConnection.getConnection();
+        try {
+            con.setAutoCommit(false);
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, course.getName());
+            pst.setInt(2, course.getId());
+            pst.executeUpdate();
+
+            con.commit();
+            mysqlConnection.closeConnection();
+            System.out.println("Course name updated.....");
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public void delete(Course course) {
+        String sql = "DELETE FROM COURSES WHERE course_id=?";
+        Connection con = mysqlConnection.getConnection();
+        try {
+            con.setAutoCommit(false);
+
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, course.getId());
+            pst.executeUpdate();
+
+            con.commit();
+            mysqlConnection.closeConnection();
+            System.out.println("Course deleted.....");
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 }

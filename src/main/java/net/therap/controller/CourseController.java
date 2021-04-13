@@ -48,4 +48,26 @@ public class CourseController {
             System.out.println("Not a valid Name ");
         }
     }
+
+    public void updateCourse() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter new Course Name: ");
+        String newName= input.nextLine();
+        System.out.println("Enter Course id: ");
+        int courseId= input.nextInt();
+
+        CourseService courseService = new CourseService();
+        Course course =new Course(courseId,newName);
+        courseService.updateCourse(course);
+
+    }
+
+    public void deleteCourse() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter Course id: ");
+        int courseId= input.nextInt();
+        CourseService courseService = new CourseService();
+        Course course =new Course(courseId);
+        courseService.deleteCourse(course);
+    }
 }

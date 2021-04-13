@@ -66,6 +66,26 @@ public class Main {
                     TimeAllocationController timeAllocation = new TimeAllocationController();
                     timeAllocation.allocateTime();
                     break;
+                case UPDATE_TRAINEE_NAME:
+                    System.out.println("UPDATE_TRAINEE_NAME");
+                    TraineeController traineeUpdate = new TraineeController();
+                    traineeUpdate.updateTrainee();
+                    break;
+                case UPDATE_COURSE_NAME:
+                    System.out.println("UPDATE_COURSE_NAME");
+                    CourseController courseUpdate = new CourseController();
+                    courseUpdate.updateCourse();
+                    break;
+                case DELETE_TRAINEE:
+                    System.out.println("DELETE_TRAINEE");
+                    TraineeController traineeDelete = new TraineeController();
+                    traineeDelete.deleteTrainee();
+                    break;
+                case DELETE_COURSE:
+                    System.out.println("DELETE_COURSE");
+                    CourseController courseDelete = new CourseController();
+                    courseDelete.deleteCourse();
+                    break;
                 case EXIT:
                     System.out.printf("EXIT");
                     System.exit(0);

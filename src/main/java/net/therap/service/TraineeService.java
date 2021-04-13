@@ -1,6 +1,8 @@
 package net.therap.service;
 
+import net.therap.dao.CourseDao;
 import net.therap.dao.TraineeDao;
+import net.therap.model.Course;
 import net.therap.model.Trainee;
 import net.therap.view.TraineesView;
 
@@ -27,5 +29,15 @@ public class TraineeService {
     public void insertTrainee(Trainee trainee) {
         TraineeDao traineeDao = new TraineeDao();
         traineeDao.insert(trainee);
+    }
+
+    public void updateTrainee(Trainee trainee) {
+        TraineeDao traineeDao = new TraineeDao();
+        traineeDao.update(trainee);
+    }
+
+    public void deleteTrainee(Trainee trainee) {
+        TraineeDao traineeDao = new TraineeDao();
+        traineeDao.delete(trainee);
     }
 }

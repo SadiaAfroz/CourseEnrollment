@@ -18,6 +18,10 @@ public class StartingOptionsView {
         System.out.println("7. Update trainee of a course (old trainee name, new trainee name, course id)");
         System.out.println("8. Get allocated time slot by course id");
         System.out.println("9. Allocate a time for specific course-trainee by the enrollment id");
-        System.out.println("10. EXIT ");
+        System.out.println("10. Update trainee name (trainee new name, trainee id)");
+        System.out.println("11. Update course name (course new name, course id)");
+        System.out.println("12. Delete trainee  (trainee id)");
+        System.out.println("13. Delete course (courseid)");
+        System.out.println("14. EXIT ");
     }
 }
