@@ -1,6 +1,6 @@
 package net.therap.dao;
 
-import net.therap.connector.MysqlDBMS;
+import net.therap.connector.MysqlConnector;
 import net.therap.model.Period;
 
 import java.sql.Connection;
@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class PeriodDao {
 
-    MysqlDBMS mysqlConnection;
+    private MysqlConnector mysqlConnection;
 
     public PeriodDao() {
-        this.mysqlConnection = new MysqlDBMS();
+        this.mysqlConnection = new MysqlConnector();
     }
 
     public List<Period> getPeriodsInfo(int courseId) {

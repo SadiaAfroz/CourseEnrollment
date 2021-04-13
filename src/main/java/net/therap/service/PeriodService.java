@@ -1,7 +1,7 @@
 package net.therap.service;
 
 import net.therap.model.Period;
-import net.therap.view.DetailsView;
+import net.therap.view.PeriodsView;
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ public class PeriodService {
         if (periods == null) {
             System.out.println("No Periods available");
         } else {
-            DetailsView.viewPeriods(periods);
+            PeriodsView periodsView = new PeriodsView();
+            periodsView.view(periods);
         }
     }
 }

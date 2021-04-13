@@ -5,6 +5,10 @@ import net.therap.validator.TimeRangeValidator;
 
 import java.sql.Time;
 
+/**
+ * @author sadia.afroz
+ * @since 4/8/21
+ */
 public class TimeAllocationService {
 
     public void doTimeAllocation(Time start, Time end, int dayOfWeek, int enrollmentId) {

@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * @author sadia.afroz
  * @since 3/30/21
  */
-public class MysqlDBMS {
+public class MysqlConnector {
 
     private String userName;
     private String password;
@@ -21,7 +21,7 @@ public class MysqlDBMS {
     private static final String DBMS = "mysql";
     private static final String SCHEMA = "course_enrollment";
 
-    public MysqlDBMS() {
+    public MysqlConnector() {
         this.userName = "root";
         this.password = "Welcome123!";
         this.serverName = "localhost";
@@ -29,7 +29,7 @@ public class MysqlDBMS {
         this.connection = null;
     }
 
-    public MysqlDBMS(String userName, String password, String serverName, int portNumber) {
+    public MysqlConnector(String userName, String password, String serverName, int portNumber) {
         this.userName = userName;
         this.password = password;
         this.serverName = serverName;
@@ -57,7 +57,7 @@ public class MysqlDBMS {
             throwables.printStackTrace();
         } catch (Exception ex) {
             System.out.println(ex);
-            Logger.getLogger(MysqlDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MysqlConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.connection;
     }

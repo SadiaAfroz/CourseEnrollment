@@ -1,15 +1,19 @@
 package net.therap.dao;
 
-import net.therap.connector.MysqlDBMS;
+import net.therap.connector.MysqlConnector;
 
 import java.sql.*;
 
+/**
+ * @author sadia.afroz
+ * @since 4/8/21
+ */
 public class CoursePeriodDao {
 
-    MysqlDBMS mysqlConnection;
+    private MysqlConnector mysqlConnection;
 
     public CoursePeriodDao() {
-        this.mysqlConnection = new MysqlDBMS();
+        this.mysqlConnection = new MysqlConnector();
     }
 
     public boolean verifyFreeTimeRange(Time startTime, Time endTime, int dayOfWeek) {

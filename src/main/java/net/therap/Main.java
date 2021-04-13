@@ -1,12 +1,14 @@
 package net.therap;
 
 import net.therap.controller.CourseController;
-import net.therap.controller.TimeAllocation;
-import net.therap.view.DetailsView;
+import net.therap.controller.CourseEnrollmentController;
+import net.therap.controller.TimeAllocationController;
+import net.therap.controller.TraineeController;
+import net.therap.view.StartingOptionsView;
 
 import java.util.Scanner;
 
-import static net.therap.controller.InputType.*;
+import static net.therap.util.InputType.*;
 
 /**
  * @author sadia.afroz
@@ -17,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        DetailsView.showStartingOption();
+        StartingOptionsView.viewOptions();
         while (input.hasNext()) {
             int choice = input.nextInt();
             switch (choice) {
@@ -28,24 +30,48 @@ public class Main {
                     break;
                 case TRAINEES_DETAILS_BY_COURSEID:
                     System.out.println("TRAINEES_DETAILS_BY_COURSEID");
-                    CourseController traineesForCourse = new CourseController();
+                    TraineeController traineesForCourse = new TraineeController();
                     traineesForCourse.getTraineesByCourseId();
+                    break;
+                case ADD_NEW_COURSE:
+                    CourseController courseAdd = new CourseController();
+                    courseAdd.insertCourse();
+                    break;
+                case ADD_NEW_TRAINEE:
+                    TraineeController traineeAdd = new TraineeController();
+                    traineeAdd.insertTrainee();
+                    break;
+                case ADD_NEW_ENROLLMENT:
+                    System.out.println("ADD_NEW_ENROLLMENT");
+                    CourseEnrollmentController courseEnrollmentController = new CourseEnrollmentController();
+                    courseEnrollmentController.enrollTraineeForCourse();
+                    break;
+                case REMOVE_TRAINEE_FROM_COURSE:
+                    System.out.println("REMOVE_TRAINEE_FROM_COURSE");
+                    CourseEnrollmentController deleteCourseEnrollment = new CourseEnrollmentController();
+                    deleteCourseEnrollment.removeTraineeFromCourse();
+                    break;
+                case UPDATE_TRAINEE_ON_COURSE:
+                    System.out.println("UPDATE_TRAINEE_ON_COURSE");
+                    CourseEnrollmentController updateCourseEnrollment = new CourseEnrollmentController();
+                    updateCourseEnrollment.updateTraineeNameOfCourse();
                     break;
                 case TIMESLOTS_BY_COURSEID:
                     System.out.println("TIMESLOTS_BY_COURSEID");
-                    CourseController periodsForCourse = new CourseController();
-                    periodsForCourse.getAllocatedTimeByCourseId();
+                    TimeAllocationController allocatedTimeForCourse = new TimeAllocationController();
+                    allocatedTimeForCourse.getAllocatedTimeByCourseId();
                     break;
                 case ALLOCATE_TIMESLOT:
                     System.out.println("ALLOCATE_TIMESLOT");
-                    TimeAllocation timeAllocation = new TimeAllocation();
+                    TimeAllocationController timeAllocation = new TimeAllocationController();
                     timeAllocation.allocateTime();
                     break;
                 case EXIT:
                     System.out.printf("EXIT");
                     System.exit(0);
             }
-            DetailsView.showStartingOption();
+            StartingOptionsView.viewOptions();
+            ;
         }
     }
 }

@@ -1,15 +1,8 @@
 package net.therap.controller;
 
-import net.therap.connector.MysqlDBMS;
-import net.therap.dao.CourseDao;
-import net.therap.dao.PeriodDao;
-import net.therap.dao.TraineeDao;
 import net.therap.model.Course;
-import net.therap.model.Period;
-import net.therap.model.Trainee;
 import net.therap.service.CourseService;
-import net.therap.service.PeriodService;
-import net.therap.service.TraineeService;
+import net.therap.validator.CourseValidator;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,47 +13,39 @@ import java.util.Scanner;
  */
 public class CourseController {
 
-    MysqlDBMS mysqlConnection;
-
-    public CourseController() {
-        this.mysqlConnection = new MysqlDBMS();
-    }
-
     public void getCourseById() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter Course Id: ");
         int courseId = input.nextInt();
 
-        CourseDao courseDao = new CourseDao();
-        Course course = courseDao.getCourseInfo(courseId);
-
         CourseService courseProcessor = new CourseService();
+        Course course = courseProcessor.getCourse(courseId);
         courseProcessor.processCourse(course);
     }
 
-    public void getTraineesByCourseId() {
+    public void getCoursesByTraineeId() {
         Scanner input = new Scanner(System.in);
-
         System.out.println("Enter Course Id: ");
-        int courseId = input.nextInt();
+        int traineeId = input.nextInt();
 
-        TraineeDao traineeDao = new TraineeDao();
-        List<Trainee> trainees = traineeDao.getTraineesInfo(courseId);
-
-        TraineeService traineeProcessor = new TraineeService();
-        traineeProcessor.processTrainees(trainees);
+        CourseService courseProcessor = new CourseService();
+        List<Course> courses = courseProcessor.getCourses(traineeId);
+        courseProcessor.processCourses(courses);
     }
 
-    public void getAllocatedTimeByCourseId() {
+    public void insertCourse() {
         Scanner input = new Scanner(System.in);
+        System.out.println("Enter Course Name: ");
+        String courseName = input.nextLine();
+        CourseValidator courseValidator = new CourseValidator();
+        if (courseValidator.isValidName(courseName)) {
+            Course course = new Course();
+            course.setName(courseName);
 
-        System.out.println("Enter Course Id: ");
-        int courseId = input.nextInt();
-
-        PeriodDao periodDao = new PeriodDao();
-        List<Period> periods = periodDao.getPeriodsInfo(courseId);
-
-        PeriodService periodProcessor = new PeriodService();
-        periodProcessor.processPeriods(periods);
+            CourseService courseService = new CourseService();
+            courseService.insertCourse(course);
+        } else {
+            System.out.println("Not a valid Name ");
+        }
     }
 }

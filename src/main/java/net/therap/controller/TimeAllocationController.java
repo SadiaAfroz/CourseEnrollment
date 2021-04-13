@@ -1,17 +1,21 @@
 package net.therap.controller;
 
+import net.therap.dao.PeriodDao;
 import net.therap.model.Days;
+import net.therap.model.Period;
+import net.therap.service.PeriodService;
 import net.therap.service.TimeAllocationService;
 import net.therap.validator.TimeRangeValidator;
 
 import java.sql.Time;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * @author sadia.afroz
  * @since 4/1/21
  */
-public class TimeAllocation {
+public class TimeAllocationController {
 
     public void allocateTime() {
         Scanner input = new Scanner(System.in);
@@ -49,5 +53,18 @@ public class TimeAllocation {
 
         TimeAllocationService timeAllocationService = new TimeAllocationService();
         timeAllocationService.doTimeAllocation(start, end, dayOfWeek, enrollmentId);
+    }
+
+    public void getAllocatedTimeByCourseId() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter Course Id: ");
+        int courseId = input.nextInt();
+
+        PeriodDao periodDao = new PeriodDao();
+        List<Period> periods = periodDao.getPeriodsInfo(courseId);
+
+        PeriodService periodProcessor = new PeriodService();
+        periodProcessor.processPeriods(periods);
     }
 }

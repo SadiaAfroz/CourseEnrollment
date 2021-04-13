@@ -12,6 +12,14 @@ public class Trainee {
     public Trainee() {
     }
 
+    public Trainee(String name) {
+        this.name = name;
+    }
+
+    public Trainee(int id) {
+        this.id = id;
+    }
+
     public Trainee(int id, String name) {
         this.id = id;
         this.name = name;
